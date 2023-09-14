@@ -44,7 +44,7 @@ export class TestvulComponent implements OnInit{
    // this.router.navigate(['/vfound',{vfid:vfid}])
 
     this.selVul(vfid);
-  await new Promise(resolve => setTimeout(resolve, 100)); 
+  await new Promise(resolve => setTimeout(resolve, 250)); 
   //console.log("uid",this.curuser.uid,"vuluid",this.vulfordel);
   
   if(this.curuser.uid==this.vulfordel.uid || this.curuser.uid==1){
@@ -64,7 +64,7 @@ AddNewVul(){
 
   async delVul(vfid:any): Promise<void>{
   this.selVul(vfid);
-  await new Promise(resolve => setTimeout(resolve, 100)); 
+  await new Promise(resolve => setTimeout(resolve, 250)); 
   //console.log("uid",this.curuser.uid,"vuluid",this.vulfordel);
   
   if(this.curuser.uid==this.vulfordel.uid || this.curuser.uid==1){
