@@ -1,0 +1,51 @@
+<div class="container">
+<br><br>
+<h2 style="text-align: center;">Services</h2>
+<table class="table table-condensed table-stripped table-bordered category-table">
+    <thead>
+        <tr>
+            <th>ServiceType Id</th>
+            <th>ServiceType Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let st of services">
+            <td>{{st.sid}}</td>
+            <td>{{st.sname}}</td>
+            <td>
+                <button (click)="delService(st.sid)" class="btn btn-danger" id="deleteBtn" style="background-color: crimson;">Delete</button>&nbsp;
+                &nbsp;<button (click)="editService(st)" class="btn btn-primary" id="editBtn">Edit</button>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br><br>
+
+<!-- Adding new service -->
+<div id="btnDiv">
+     <button (click)="addService()" class="btn btn-primary btn-md">Add Service</button> 
+</div>
+<br><br>
+
+<form *ngIf="showForm" (submit)="addNewService()" id="addServiceForm">
+    <h2 style="text-align: center;">Add New Category</h2>
+    <label>Service Type Name:</label>
+    <input [(ngModel)]="newservice.sname" name="name" type="text" class="form-control"><br>
+
+    <button type="submit" class="btn btn-primary btn-md" >Add Service</button>
+    <button type="button" class="btn btn-danger" (click)="cancelAddService()"
+        style="margin-left: 5px;">Cancel</button>
+</form>
+
+<!-- updating service form -->
+<form *ngIf="editingService" (submit)="updateService()" id="updateForm">
+    <h2 style="text-align: center;">Update Service</h2>
+    <label>Service Name:</label>
+    <input [(ngModel)]="selectedService.sname" name="name" type="text" class="form-control"><br>
+    <button type="submit" class="btn btn-primary btn-md">Update Service</button>
+    <button type="button" class="btn btn-danger" (click)="cancelUpdateService()"
+        style="margin-left: 5px;">Cancel</button>
+</form>
+    </div>

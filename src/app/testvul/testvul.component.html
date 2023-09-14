@@ -1,0 +1,26 @@
+<div class="container">
+<br><br>
+    <button (click)="AddNewVul()" class="btn btn-primary" id="addBtn">Add New Vulnerability</button>
+<br><br>
+    <table class="table table-condensed table-stripped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Vulnerability Id</th>
+                <th>Vulnerability Name</th>
+                <th>Action</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let v of vfoundlist">
+                <td>{{v.vfid}}</td>
+                <td>{{v.vfname}}</td>
+                <td><button (click)="editVul(v.vfid)" class="btn btn-primary" id="editBtn">Edit</button></td>
+                <td><button (click)="viewVul(v.vfid)" class="btn btn-primary" id="viewBtn">View</button></td>
+                <td>
+                <button (click)="delVul(v.vfid)" class="btn btn-danger" id="deleteBtn" style="background-color: crimson;">Delete</button>
+                 <!--     <button (click)="editvul(c)" class="btn btn-primary" id="editBtn">Edit</button>
+                </td>-->  
+            </tr>
+        </tbody>
+    </table>

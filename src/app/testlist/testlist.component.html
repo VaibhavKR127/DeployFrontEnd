@@ -1,0 +1,54 @@
+<h2 style="text-align: center;">Test List</h2>
+
+
+<div class="container">
+<br>
+    <div id="btnDiv">
+        <button (click)="addTest()" class="btn btn-primary btn-md">Add New Test</button> 
+   </div>
+   <br>
+
+
+    <table class="table table-condensed table-stripped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Test Id</th>
+                <th>Company Id</th>
+                <th>Service Id</th>
+               
+                <th>Action</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of testlist">
+                <td>{{t.tid}}</td>
+                <td>{{t.company.cname}}</td>
+                <td>{{t.service.sname}}</td>
+               
+                <td><button (click)="view(t.tid)" class="btn btn-primary" id="viewBtn">View</button>&nbsp;
+                    <button (click)="delVul(t.tid)" class="btn btn-danger" id="deleteBtn" style="background-color: crimson;">Delete</button></td>
+                <td><button (click)="downloadFile(t.tid)" class="btn btn-primary" id="DownBtn">Download</button></td>
+                 
+                 <!--   <button (click)="editvul(c)" class="btn btn-primary" id="editBtn">Edit</button>
+                </td>-->  
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <div class="container">
+        <form *ngIf="showForm" (submit)="addNewTest()" id="addTestForm">
+            <h2 style="text-align: center;">Add New Test</h2>
+            <label>Company Id:  </label>&nbsp; &nbsp;
+            <p-dropdown   [style]="{'min-width':'210pt' ,'background-color':'white'}"  placeholder="   Select Company  "  (onChange) = "onselectedcomp($event)" [options]="compList" optionLabel="cname" [filter]="true" filterBy="cname" [showClear]="true" [panelStyle]="{'background-color': 'white','opacity': '1'}"></p-dropdown>
+            <br><br><br>
+            <label>Service Type Id:</label>&nbsp; &nbsp;
+            <p-dropdown  [style]="{'min-width':'210pt' }"  placeholder="   Select Service   "  (onChange) = "onselectedserv($event)" [options]="servList" optionLabel="sname" [filter]="true" filterBy="sname" [showClear]="true" class="custom-dropdown"   [panelStyle]="{'background-color': 'white'}"></p-dropdown>
+            <br><br>
+            <button type="submit" class="btn btn-primary btn-md" >Add Test</button>
+            <button type="button" class="btn btn-danger" (click)="cancelAddTest()"
+                style="margin-left: 5px; background-color: crimson;">Cancel</button>
+        </form>
+        </div>

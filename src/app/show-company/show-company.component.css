@@ -1,0 +1,45 @@
+.category-table{
+    width: 80vw;
+    margin: auto; 
+    font-size: 18px; 
+    margin-top: 10px;
+}
+thead{
+    background-color: black;
+    color: white;
+}
+tbody{
+    background-color: #1d2327;
+    color: #ffc107;
+}
+tr:hover{
+    color: #1d2327;
+    background-color: #ffc107;
+}
+.btn{
+    padding: 5px; 
+    text-align: center;
+}
+#deleteBtn{
+    margin-right: 5px;
+    width: 30%;
+}
+#editBtn{
+    width: 30%;
+}
+#btnDiv{
+    display: flex;
+    justify-content: center;
+}
+#addCategoryForm{
+    width: 50vw; 
+    margin: auto; 
+    margin-bottom: 10px; 
+    font-size: 18px;
+}
+#updateForm{
+    width: 50vw; 
+    margin: auto; 
+    margin-bottom: 10px; 
+    font-size: 18px;
+}

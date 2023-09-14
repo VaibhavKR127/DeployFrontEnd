@@ -1,0 +1,63 @@
+<div class="container">
+    <br>
+    <br>
+    <h2 style="text-align: center;">Users</h2>
+<table class="table table-condensed table-stripped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>User Id</th>
+            <th>User Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let u of users">
+            <td>{{u.uid}}</td>
+            <td>{{u.uname}}</td>
+            <td><button (click)="delUser(u.uid)" class="btn btn-danger" id="deleteBtn" style="background-color: crimson;">Delete</button>
+                &nbsp;<button (click)="editUser(u)" class="btn btn-primary" id="editBtn">Edit</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Adding new user -->
+<div id="btnDiv">
+    <button (click)="adduser()" class="btn btn-primary btn-md">Add user</button> 
+</div>
+<br><br>
+
+<form *ngIf="showForm" (submit)="addNewuser()" id="adduserForm">
+   <h2 style="text-align: center;">Add New Category</h2>
+   <label>UserName:</label>
+   <input [(ngModel)]="newuser.uname" name="name" type="text" class="form-control"><br>
+   <label>Password:</label>
+   <input [(ngModel)]="newuser.upass" name="pass" type="text" class="form-control"><br>
+   <label>Security Question:</label>
+   <input [(ngModel)]="newuser.secq" name="secq" type="text" class="form-control"><br>
+   <label>Security Answer:</label>
+   <input [(ngModel)]="newuser.secans" name="secans" type="text" class="form-control"><br>
+   <button type="submit" class="btn btn-primary btn-md" >Add user</button>
+   <button type="button" class="btn btn-danger" (click)="cancelAdduser()"
+       style="margin-left: 5px;">Cancel</button>
+</form>
+
+<!-- updating user form -->
+<form *ngIf="editinguser" (submit)="updateuser()" id="updateForm">
+   <h2 style="text-align: center;">Update user</h2>
+   <label>UserName:</label>
+   <input [(ngModel)]="selecteduser.uname" name="name" type="text" class="form-control"><br>
+   <label>Password:</label>
+   <input [(ngModel)]="selecteduser.upass" name="pass" type="text" class="form-control"><br>
+   <label>Security Question:</label>
+   <input [(ngModel)]="selecteduser.secq" name="secq" type="text" class="form-control"><br>
+   <label>Security Answer:</label>
+   <input [(ngModel)]="selecteduser.secans" name="secans" type="text" class="form-control"><br>
+   <button type="submit" class="btn btn-primary btn-md">Update user</button>
+   <button type="button" class="btn btn-danger" (click)="cancelUpdateuser()"
+       style="margin-left: 5px;">Cancel</button>
+</form>
+   </div>
+
+
+    

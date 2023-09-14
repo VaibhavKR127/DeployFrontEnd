@@ -1,0 +1,73 @@
+<div class="container">
+
+<br>
+<h2 style="text-align: center;">Vulnerability Set</h2>
+    <table class="table table-condensed table-stripped table-bordered category-table">
+        <thead>
+            <tr>
+                <th>Vulnerability Id</th>
+                <th>Vulnerability Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let v of vset">
+                <td>{{v.vid}}</td>
+                <td>{{v.vfname}}</td>
+                <td>
+                    <button (click)="delvset(v.vid)" class="btn btn-danger" id="deleteBtn" style="background-color: crimson;">Delete</button>
+                    &nbsp;<button (click)="editvset(v)" class="btn btn-primary" id="editBtn">Edit</button>
+    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br><br>
+    
+    <!-- Adding new category -->
+    <div id="btnDiv">
+         <button (click)="addvset()" class="btn btn-primary btn-md">Add Vulnerability</button> 
+    </div>
+    <br><br>
+    
+    <form *ngIf="showForm" (submit)="addNewvset()" id="addvsetForm">
+        <h2 style="text-align: center;">Add New Category</h2>
+        <label>Vulnerability Name:</label>
+        <input [(ngModel)]="newvset.vfname" name="name" type="text" class="form-control" required><br>
+
+        <label>Description:</label>
+        <input [(ngModel)]="newvset.description" name="description" type="text" class="form-control" required><br>
+
+        <label>Severity:</label>
+        <!-- <input [(ngModel)]="newvset.severity" name="severity" type="text" class="form-control"><br> -->
+        <select [(ngModel)]="newvset.severity" name ="severity" class="form-control" required>
+          <option *ngFor="let s of severity" [ngValue]="s.name">{{s.name}}</option>
+        </select> <br>
+        <label>References:</label>
+        <input [(ngModel)]="newvset.references" name="references" type="text" class="form-control" required><br>
+
+        <button type="submit" class="btn btn-primary btn-md" >Add Vulnerability</button>
+        <button type="button" class="btn btn-danger" (click)="cancelAddvset()"
+            style="margin-left: 5px;">Cancel</button>
+    </form>
+    
+    <!-- updating category form -->
+    <form *ngIf="editingvset" (submit)="updatevset()" id="updateForm">
+        <h2 style="text-align: center;">Update Vulnerability</h2>
+        <label>Vulnerability Name:</label>
+        <input [(ngModel)]="selectedvset.vfname" name="name" type="text" class="form-control" required><br>
+
+        <label>Description:</label>
+        <input [(ngModel)]="selectedvset.description" name="description" type="text" class="form-control" required><br>
+
+        <label>Severity:</label>
+        <input [(ngModel)]="selectedvset.severity" name="severity" type="text" class="form-control" required><br>
+
+        <label>References:</label>
+        <input [(ngModel)]="selectedvset.references" name="references" type="text" class="form-control" required><br>
+        <button type="submit" class="btn btn-primary btn-md">Update Vulnerability</button>
+        <button type="button" class="btn btn-danger" (click)="cancelUpdatevset()"
+            style="margin-left: 5px;">Cancel</button>
+    </form>
+        </div>
+    

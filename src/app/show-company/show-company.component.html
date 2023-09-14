@@ -1,0 +1,38 @@
+<div class="container">
+    <br>
+    <br>
+    <h2 style="text-align: center;">Companies</h2>
+
+    <button (click)="addcomp()" class="btn btn-primary">Add Company</button><br>
+    <br>
+<table class="table table-condensed table-stripped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Company Id</th>
+            <th>Company Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of companies">
+            <td>{{c.cid}}</td>
+            <td>{{c.cname}}</td>
+            <td>
+                <button (click)="delCompany(c.cid)" class="btn btn-danger" id="deleteBtn" style="background-color: crimson;">Delete</button>
+                <button (click)="editCompany(c)" class="btn btn-primary" id="editBtn">Edit</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- updating company form -->
+<form *ngIf="editingCompany" (submit)="updateCompany()" id="updateForm">
+    <h2 style="text-align: center;">Update Company</h2>
+    <label>Company Name:</label>
+    <input [(ngModel)]="selectedCompany.cname" name="name" type="text" class="form-control"><br>
+    <button type="submit" class="btn btn-primary btn-md">Update Company</button>
+    <button type="button" class="btn btn-danger" (click)="cancelUpdateCompany()"
+        style="margin-left: 5px;">Cancel</button>
+</form>
+</div>

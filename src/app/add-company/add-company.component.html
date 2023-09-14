@@ -1,0 +1,13 @@
+<div class="container">
+    <br>
+    <br>
+    <form  (submit)="addNewCompany()" id="addCompanyForm">
+        <h2 style="text-align: center;">Add New Company</h2>
+        <label>Company Name:</label>
+        <input [(ngModel)]="newcompany.cname" name="name" type="text" class="form-control"><br>
+    
+        <button type="submit" class="btn btn-primary btn-md" >Add Company</button>
+        <button type="button" class="btn btn-danger" (click)="cancelAddCompany()"
+            style="margin-left: 5px; background-color: crimson;">Cancel</button>
+    </form>
+    </div>

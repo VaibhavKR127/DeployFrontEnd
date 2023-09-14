@@ -1,0 +1,11 @@
+<div class="container">
+    <h2>Login</h2>
+    <form (submit)="userexists()" ngNativeValidate>
+      <label for="Username">Username:</label>
+      <input type="uname" [(ngModel)]="uname" name="email" placeholder="Enter Username" required (change)="fetchuser()"><br><br>
+      <label for="password">Password:</label>
+      <input type="password" [(ngModel)]="password" name="pass" placeholder="Enter Password" ><br><br>
+      <input type="submit" value="Login" class="btn btn-md btn-primary">
+    </form><br><br>
+    <!-- <button (click)="ForgotPassword()">Forgot Password</button> -->
+  </div>

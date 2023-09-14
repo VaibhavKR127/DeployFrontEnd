@@ -1,0 +1,90 @@
+<!--<div class="filter-section form-select">
+    <label for="Vul">Vulnerability:</label>
+    <select id="category" [(ngModel)]="selectedVul" (change)="filterVulnerability()">
+      <option value="">All</option>
+      <option *ngFor="let vul of Vulnlist" [value]="vul.vid">{{ vul.vfname }}</option>
+    </select>
+  </div>-->
+
+  <div class="container">
+    <form  (submit)="addNewVul(vulForm)" id="addVulForm" #vulForm = "ngForm"  >
+        <h2 style="text-align: center;">View Vulnerability</h2>
+        <label>Test ID:</label>
+        <input [(ngModel)]="filteredVul.tid" name="tid" type="text" class="form-control" readonly><br>
+       <label>Vulnerability Name:</label><br>
+        <input [(ngModel)]="filteredVul.vfname" name="name" type="text" class="form-control" readonly><br>
+       <!-- <p-dropdown [style]="{'min-width':'210pt', 'z-index': '200'}"  placeholder="Select Vulnerability"  (onChange) = "onselected($event)" [options]="Vulnlist" optionLabel="vfname" [filter]="true" filterBy="vfname" [showClear]="true" [panelStyle]="{'background-color': 'white'}"></p-dropdown> -->
+   
+        <label for="severity" >Severity:</label>
+        <!-- <select [(ngModel)]="filteredVul.severity" name ="severity" class="form-control">
+          <option *ngFor="let s of severity" [ngValue]="s">{{s.name}}</option>
+        </select> -->
+        <input [(ngModel)]="filteredVul.severity" name="severity" type="text" class="form-control" required readonly><br>
+        <label>Status:</label>
+        <input [(ngModel)]="filteredVul.status" name="status" type="text" class="form-control" required readonly><br>
+        
+        <!-- <select [(ngModel)]="filteredVul.status" name ="status" class="form-control" required>
+          <option *ngFor="let s of status" [ngValue]="s.name">{{s.name}}</option>
+        </select> <br><br> -->
+        <label>Description:</label>
+        <input [(ngModel)]="filteredVul.description" name="description" type="text" class="form-control" required readonly><br>
+        <label>Remediation:</label>
+        <input [(ngModel)]="filteredVul.remediation" name="remediation" type="text" class="form-control" required readonly><br>
+        <label>Affected Url's:</label>
+        <input [(ngModel)]="filteredVul.affectedurls" name="affectedurls" type="text" class="form-control" required readonly><br>
+        <label>References:</label>
+        <input [(ngModel)]="filteredVul.vreferences" name="references" type="text" class="form-control" required readonly><br>
+        
+       <!-- <label>PoC:</label>
+        <div class="col-12">
+        <input [(ngModel)]="filteredVul.poc" multiple value="select" name="poc" type="file" (change)="onFileSelected($event)" class="form-control" ><br>
+        </div>-->
+
+
+        <div>
+          <div class="col-6">
+          <label>Test Poc:</label>
+          <!-- <input type="file" multiple value="select" #selectFile   name="poc" class="form-control" readonly><br> -->
+          </div>
+        </div>
+        <div class="mt-5">
+          <div class="row">
+            <mat-grid-list cols="1" rowHeight="2:1">
+    
+              <mat-grid-tile *ngFor="let file of filteredVul.poc; let i=index">
+                <div class="dia-close" >
+                  <textarea  [(ngModel)]="filteredVul.pocdes[i]" [name]="copoc[i+1]" class="form-control" width="500px" height="100px" readonly></textarea>
+              <img [src]="file.url" width="400px" height="300px" class="dia-img"><br>
+             <!-- <input type="text" [(ngModel)]="filteredVul.pocdes[i].pdesc" name="pocdes" class="form-control">-->
+             
+              <!-- <span class="btn-remove-image" (click)="removeImg(i)">x</span> -->
+            </div>
+              </mat-grid-tile>
+            </mat-grid-list>
+         
+          </div>
+          </div>
+  
+
+
+   <!--    <div *ngFor="let file of filteredVul.poc; let i=index" >
+          <div style="position: relative;">
+              <span class="btn-remove-img" (click)="removeImg(i)">del</span>
+          <img [src]="file.url" width="100px" height="100px">
+          </div>--> 
+
+
+
+        
+        <button type="button" class="btn btn-danger" (click)="cancelAddVul()"
+            style="margin-left: 5px; background-color: crimson;">Cancel</button>
+    </form>
+    </div>
+
+
+
+
+
+
+
+
